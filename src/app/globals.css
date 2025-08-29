@@ -2,26 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Define global colors matching Tailwind custom colors */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --background-color: #0F0F0F;       /* Charcoal Black */
+  --text-primary: #EAEAEA;           /* Light Gray */
+  --text-secondary: #A0A0A0;         /* Cool Gray */
+  --primary-accent: #4FB3FF;         /* Neon Blue */
+  --secondary-accent: #A288E3;       /* Soft Purple */
+  --hover-accent: #7F5AF0;           /* Electric Violet */
+  --border-color: #1C1C1E;           /* Dark Slate */
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--text-primary);
+  background-color: var(--background-color);
+}
+
+/* Optional: smooth scroll + nicer font rendering */
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: var(--primary-accent);
+}
+
+a:hover {
+  color: var(--hover-accent);
 }

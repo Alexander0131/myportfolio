@@ -18,15 +18,9 @@ const EmailSection = () => {
     const JSONdata = JSON.stringify(data);
     const endpoint = "/api/send";
 
-    // Form the request for sending data to the server.
     const options = {
-      // The method is POST because we are sending data.
       method: "POST",
-      // Tell the server we're sending JSON.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // Body of the request is the JSON data we created above.
+      headers: { "Content-Type": "application/json" },
       body: JSONdata,
     };
 
@@ -44,38 +38,34 @@ const EmailSection = () => {
       id="contact"
       className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
     >
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
+      {/* Glow Background */}
+      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/30 to-transparent rounded-full h-80 w-80 z-0 blur-3xl absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-y-1/2"></div>
+
+      {/* Text + Socials */}
       <div className="z-10">
-        <h5 className="text-xl font-bold text-white my-2">
-          Let&apos;s Connect
-        </h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
+        <h5 className="text-xl font-bold text-textPrimary my-2">Let&apos;s Connect</h5>
+        <p className="text-textSecondary mb-4 max-w-md">
+          I&apos;m currently looking for new opportunities — my inbox is always open. Whether you have a question or just want to say hi, I&apos;ll do my best to respond!
         </p>
-        <div className="socials flex flex-row gap-2">
-          <Link href="github.com">
+        <div className="socials flex flex-row gap-4">
+          <Link href="https://github.com/Alexander0131" target="_blank">
             <Image src={GithubIcon} alt="Github Icon" />
           </Link>
-          <Link href="linkedin.com">
+          <Link href="https://linkedin.com" target="_blank">
             <Image src={LinkedinIcon} alt="Linkedin Icon" />
           </Link>
         </div>
       </div>
+
+      {/* Contact Form */}
       <div>
         {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
-          </p>
+          <p className="text-green-500 text-sm mt-2">Email sent successfully!</p>
         ) : (
           <form className="flex flex-col" onSubmit={handleSubmit}>
+            {/* Email */}
             <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="text-white block mb-2 text-sm font-medium"
-              >
+              <label htmlFor="email" className="text-textPrimary block mb-2 text-sm font-medium">
                 Your email
               </label>
               <input
@@ -83,15 +73,14 @@ const EmailSection = () => {
                 type="email"
                 id="email"
                 required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="jacob@google.com"
+                className="bg-background border border-border placeholder-textSecondary text-textPrimary text-sm rounded-lg block w-full p-2.5"
+                placeholder="you@example.com"
               />
             </div>
+
+            {/* Subject */}
             <div className="mb-6">
-              <label
-                htmlFor="subject"
-                className="text-white block text-sm mb-2 font-medium"
-              >
+              <label htmlFor="subject" className="text-textPrimary block text-sm mb-2 font-medium">
                 Subject
               </label>
               <input
@@ -99,27 +88,30 @@ const EmailSection = () => {
                 type="text"
                 id="subject"
                 required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+                className="bg-background border border-border placeholder-textSecondary text-textPrimary text-sm rounded-lg block w-full p-2.5"
                 placeholder="Just saying hi"
               />
             </div>
+
+            {/* Message */}
             <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="text-white block text-sm mb-2 font-medium"
-              >
+              <label htmlFor="message" className="text-textPrimary block text-sm mb-2 font-medium">
                 Message
               </label>
               <textarea
                 name="message"
                 id="message"
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+                rows="4"
+                required
+                className="bg-background border border-border placeholder-textSecondary text-textPrimary text-sm rounded-lg block w-full p-2.5"
                 placeholder="Let's talk about..."
-              />
+              ></textarea>
             </div>
+
+            {/* Submit */}
             <button
               type="submit"
-              className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+              className="bg-primary hover:bg-primary/80 text-white font-medium py-2.5 px-5 rounded-lg w-full transition-colors duration-300"
             >
               Send Message
             </button>
